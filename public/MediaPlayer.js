@@ -6,6 +6,12 @@ function MediaPlayer(config) {
     this._initPlugins()
 }
 
+MediaPlayer.prototype._initPlugins = function (){
+    this.plugins.forEach(plugin => {
+        plugin.run(this);
+    });
+}
+
 MediaPlayer.prototype.play = function () {
     this.media.play();
 };
@@ -21,12 +27,6 @@ MediaPlayer.prototype.togglePlay = function () {
         this.media.pause();
     }
 };
-
-MediaPlayer.prototype._initPlugins = function (){
-    this.plugins.forEach(plugin => {
-        plugin.run(this);
-    });
-}
 
 MediaPlayer.prototype.toggleMute = function(){
     this.media.muted = !this.media.muted
