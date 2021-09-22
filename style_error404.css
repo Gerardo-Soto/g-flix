@@ -1,0 +1,125 @@
+body {
+    background-color: #AB88FF;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+}
+
+p {
+    font-family: 'PT Sans', sans-serif;
+}
+
+a {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.header {
+    align-items: center;
+    background-color: #8F57FD;
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header__img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.header__menu {
+    margin-right: 30px;
+}
+
+.header__menu ul {
+    display: none;
+    list-style: none;
+    margin: 0px 0px 0px -14px;
+    padding: 0px;
+    position: absolute;
+    text-align: right;
+    width: 100px;
+}
+
+.header__menu:hover ul, ul:hover{
+    display: block;
+}
+
+.header__menu li {
+    margin: 10px 0px;
+    margin-top: 10px;
+}
+
+.header__menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.header__menu li a:hover {
+    text-decoration: underline;
+}
+
+.header__menu--profile {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    margin-right: 8px;
+    padding-bottom: 15px;
+}
+
+.header__menu--profile img {
+    margin-right: 8px;
+    width: 40px;
+}
+
+.header__menu--profile p {
+    color: white;
+    margin: 0px;
+}
+
+.text {
+  text-align: center;
+  margin-top: 56px;
+  color: #fff;
+  font-size: 1.0em;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flip {
+  0% {transform: perspective(400px) translateZ(0) rotateY(0) scale(1);animation-timing-function: ease-out;}
+  40% {transform: perspective(400px) translateZ(150px) rotateY(170deg) scale(1);animation-timing-function: ease-out;}
+  50% {transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);animation-timing-function: ease-in;}
+  80% {transform: perspective(400px) translateZ(0) rotateY(360deg) scale(.95);animation-timing-function: ease-in;}
+  100% {transform: perspective(400px) translateZ(0) rotateY(360deg) scale(1);animation-timing-function: ease-in;}
+}
+.animated.flip {
+  backface-visibility: visible;
+  animation-name: flip;
+}
+
+.footer ul {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    height: 100px;
+    width: 100%;
+}
+
+.footer a {
+    color: whitesmoke;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

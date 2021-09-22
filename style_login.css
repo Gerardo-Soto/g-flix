@@ -1,0 +1,185 @@
+body {
+    margin: 0px;
+    background: linear-gradient( #8F57FD, turquoise);
+}
+
+p {
+    font-family: 'PT Sans', sans-serif;
+}
+
+h2 h3 label {
+    font-family: 'PT Sans', sans-serif;
+}
+
+a {
+    font-family: 'PT Sans', sans-serif;
+}
+
+input {
+    font-family: 'PT Sans', sans-serif;
+    color: whitesmoke;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header__img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    min-height: calc(100vh - 200px);
+}
+
+.login__container {
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 40px;
+    color: whitesmoke;
+    width: 300px;
+    padding: 20px;
+    min-height: 370px;
+    height: 600px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.login__container--form {
+    display: flex;
+    flex-direction: column;
+    outline: red solid 1px;
+}
+
+.login__container--form label {
+    font-size: 14px;
+}
+
+.login__container--form input {
+    background-color: transparent;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid whitesmoke;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+
+
+::placeholder {
+    color: whitesmoke;
+}
+
+.btnCalcular {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.login__container--remember-me {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.login__container--remember-me a {
+     color: whitesmoke;
+     text-decoration: none;
+}
+
+.login__container--remember-me a:hover {
+    text-decoration: underline;
+}
+
+.login__container--label {
+    cursor: pointer;
+    display: flex;
+    justify-content: left;
+    justify-items: center;
+}
+
+.login__container--checkbox {
+    cursor: pointer;
+}
+
+.login__container--social-media > div { /* > div : de la clase login__container--social-media, coje todos los div y aplicale la definición */
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.login__container--social-media img {
+    width: 30px;
+    object-fit: scale-down;
+    padding-right: 10px;
+}
+
+.login__container--social-media p {
+    font-size: 14px;
+}
+
+.login__container--registrate a {
+    color: whitesmoke;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login__container--registrate a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.footer a {
+    color: whitesmoke;
+    cursor: pointer;
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    .login__container {
+        background-color: transparent;
+        border: none;
+        padding: 0%;
+        width: 100%;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    
+}
+

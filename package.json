@@ -1,0 +1,23 @@
+{
+  "name": "frontenddeveloper",
+  "version": "1.0.0",
+  "description": "PlatziVideo html/css/js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/GerardoSoto/frontenddeveloper.git"
+  },
+  "author": "Gerardo Soto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/GerardoSoto/frontenddeveloper/issues"
+  },
+  "homepage": "https://gitlab.com/GerardoSoto/frontenddeveloper#readme",
+  "devDependencies": {
+    "liveserver": "^0.1.20"
+  }
+}
