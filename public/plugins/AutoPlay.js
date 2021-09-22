@@ -2,7 +2,7 @@ function AutoPlay(){
 
 }
 
-AutoPlay.prototype.run = function(){
+AutoPlay.prototype.run = function(player){
     player.mute();
     //Play video
     player.play();
