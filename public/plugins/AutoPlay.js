@@ -3,7 +3,7 @@ function AutoPlay(){
 }
 
 AutoPlay.prototype.run = function(player){
-    player.muted();
+    player.muted = true;
     //Play video
     player.play();
 }
