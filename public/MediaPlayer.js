@@ -28,18 +28,8 @@ MediaPlayer.prototype._initPlugins = function (){
     });
 }
 
-MediaPlayer.prototype.mute = function(){
-    if(this.media.mute){
-        this.media.mute = false;
-        this.media.unmute = true;
-    }else{
-        this.media.mute = true;
-        this.media.unmute = false;
-    }
-}
-
-MediaPlayer.prototype.unmute = function(){
-    this.media.unmute = false;
+MediaPlayer.prototype.toggleMute = function(){
+    this.media.muted = !this.media.muted
 }
 
 export default MediaPlayer;
