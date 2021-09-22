@@ -29,7 +29,13 @@ MediaPlayer.prototype._initPlugins = function (){
 }
 
 MediaPlayer.prototype.mute = function(){
-    this.media.mute = true;
+    if(this.media.mute){
+        this.media.mute = false;
+        this.media.unmute = true;
+    }else{
+        this.media.mute = true;
+        this.media.unmute = false;
+    }
 }
 
 MediaPlayer.prototype.unmute = function(){
