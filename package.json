@@ -26,5 +26,29 @@
     "live-server": "^1.2.1",
     "nodemon": "^2.0.14",
     "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
