@@ -1,4 +1,5 @@
 const express = require('express');
+//const faker = require('faker');
 
 // config server
 const app = express();
@@ -26,6 +27,21 @@ app.get('/new-path', (req, res) => {
 app.get('/user/:id', (req, res) => {
   const {id} = req.params;
   res.json({userId: id});
+});
+
+// route of user with Query params
+app.get('/users', (req, res) => {
+  // Names of the Query params:
+  const { limit, offset } = req.query;
+  // validate if received params:
+  if (limit && offset) {
+    res.json({
+      limit,
+      offset
+    });
+  } else {
+    res.send('There are not params.');
+  }
 });
 
 // route of all products
