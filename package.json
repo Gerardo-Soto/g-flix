@@ -25,10 +25,22 @@
     "eslint-plugin-prettier": "^4.0.0",
     "live-server": "^1.1.0",
     "nodemon": "^2.0.14",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "faker": "^5.5.3"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "faker": "^5.5.3"
+    "express": "^4.17.1"
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 const express = require('express');
-//const faker = require('faker');
+const faker = require('faker');
 
 // config server
 const app = express();
@@ -46,16 +46,37 @@ app.get('/users', (req, res) => {
 
 // route of all products
 app.get('/products', (req, res) => {
-  res.json([
-    {
-      name: 'Product 1',
-      price: 120
-    },
-    {
-      name: 'Product 2',
-      price: 150
-    }
-  ]);
+  const products = [];
+  for (let index = 0; index < 100; index++) {
+    products.push({
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10),// <- base 10
+      image: faker.image.imageUrl(),
+    });
+  }
+  res.json(products);
+});
+
+
+// route of some products
+app.get('/products-query', (req, res) => {
+  const { size } = req.query;
+  const products = [];
+  // Number of products requested from the URL:
+  for (let index = 0; index < size; index++){
+    products.push({
+      name: faker.commerce.productName(),
+      price: parseInt(faker.commerce.price(), 10),// <- base 10
+      image: faker.image.imageUrl,
+    });
+  }
+  res.json(products);
+});
+
+
+// Use of filter:
+app.get('/products/filter', (req, res) => {
+  res.send('I\'m a filter.');
 });
 
 // route of a product
