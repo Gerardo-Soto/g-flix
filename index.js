@@ -1,9 +1,12 @@
 const express = require('express');
-const faker = require('faker');
+const routeApi = require('./routes');// = ./routes/index.js
 
 // config server
 const app = express();
 const port = 3000;
+
+// Middleware to receive JSON POST:
+app.use(express.json());
 
 // paths app
 // route by default:
@@ -16,115 +19,9 @@ app.get('/home', (req, res) => {
   res.send('Welcome to home!');
 });
 
+// Add to routeApi the routes of this file:
+routeApi(app);
 
-// route new product
-app.get('/new-path', (req, res) => {
-  // Java Script Object Notation:
-  res.json('Hello, I\'m a new path');
-});
-
-// route of user id
-app.get('/user/:id', (req, res) => {
-  const {id} = req.params;
-  res.json({userId: id});
-});
-
-// route of user with Query params
-app.get('/users', (req, res) => {
-  // Names of the Query params:
-  const { limit, offset } = req.query;
-  // validate if received params:
-  if (limit && offset) {
-    res.json({
-      limit,
-      offset
-    });
-  } else {
-    res.send('There are not params.');
-  }
-});
-
-// route of all products
-app.get('/products', (req, res) => {
-  const products = [];
-  for (let index = 0; index < 100; index++) {
-    products.push({
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),// <- base 10
-      image: faker.image.imageUrl(),
-    });
-  }
-  res.json(products);
-});
-
-
-// route of some products
-app.get('/products-query', (req, res) => {
-  const { size } = req.query;
-  const products = [];
-  // Number of products requested from the URL:
-  for (let index = 0; index < size; index++){
-    products.push({
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),// <- base 10
-      image: faker.image.imageUrl,
-    });
-  }
-  res.json(products);
-});
-
-
-// Use of filter:
-app.get('/products/filter', (req, res) => {
-  res.send('I\'m a filter.');
-});
-
-// route of a product
-app.get('/products/:id', (req, res) => {
-  // EMACScript 5-
-  //  const id = req.params.id;
-  // EMACScript 6+
-  const { id } = req.params;
-  res.json({
-    id,
-    name: 'Product 2',
-    price: 150,
-  });
-});
-
-// route of detail product
-app.get('/products/:id/details', (req, res) => {
-  const { id } = req.params;
-  res.json({
-    id,
-    detail: 'Halloween.',
-  });
-});
-
-// route of all categories
-app.get('/categories', (req, res) => {
-  res.send([{
-    category: 'Comedy',
-    quantity: 10,
-  },
-  {
-    category: 'Action',
-    quantity: 5,
-  },
-  {
-    category: 'Fantasy',
-    quantity: 7,
-  }])
-});
-
-// route of some categories
-app.get('/categories/:categoryId/products/:productId', (req, res) => {
-  const { categoryId, productId } = req.params;
-  res.json({
-    categoryId,
-    productId,
-  });
-});
 
 //run app:
 app.listen(port, () => {
