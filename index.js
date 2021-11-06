@@ -24,7 +24,7 @@ routeApi(app);
 
 
 //run app:
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   // console.log -> warning: Bad practice by Eslint:
   // console.log in Dev (yes) / console.log in Prod (NO)
   console.log('Server listen at http://localhost:' + port);

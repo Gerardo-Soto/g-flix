@@ -1,22 +1,16 @@
-//const { application } = require('express');
+//Packages:
 const express = require('express');
 const router = express.Router()// = /products
 
-const faker = require('faker');
+// Services:
+const ProductService = require('../services/productService');
 
+// initialization class ProductService
+const productService = new ProductService();
 
 // route of all products
 router.get('/', (req, res) => {
-  const products = [];
-  const { quantity } = req.query || 10;
-  //const limit = quantity;
-  for (let index = 0; index < quantity; index++) {
-    products.push({
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),// <- base 10
-      image: faker.image.imageUrl(),
-    });
-  }
+  const products = productService.find();
   res.status(200).json(products);
 });
 
@@ -26,36 +20,32 @@ router.get('/filter', (req, res) => {
   res.status(200).send('I\'m a filter.');
 });
 
-// route of a product
+// route to get a specific product by ID
 router.get('/:id', (req, res) => {
   // EMACScript 5-
   //  const id = req.params.id;
   // EMACScript 6+
   const { id } = req.params;
-  if (parseInt(id) > 99) {
-    res.status(404).json({
-      message: 'Not found.',
-    });
+  const product = productService.findOne(id);
+  if (product) {
+    res.status(200).json(product);
   } else {
-    res.status(200).json({
-      id,
-      name: 'Product 2',
-      price: 150,
-    });
+    res.status(404).json(product);
   }
 });
 
 // route to get the detail product
 router.get('/:id/details', (req, res) => {
   const { id } = req.params;
-  if (parseInt(id) > 99) {
-    res.status(404).json({
-      message: 'Not found.',
+  const product = productService.findOne(id);
+  if (product) {
+    res.status(200).json({
+
     });
   } else {
-    res.status(200).json({
+    res.status(404).json({
       id,
-      detail: 'Halloween'
+      detail: 'Not found.'
     });
   }
 });
