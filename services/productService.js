@@ -1,4 +1,5 @@
 const faker = require('faker');
+const boom = require('@hapi/boom');
 
 function randomApiCall() {
   return Math.random() * 100;
@@ -24,6 +25,7 @@ class ProductService {
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),// <- base 10
         image: faker.image.imageUrl(),
+        isBlocked: faker.datatype.boolean(),
       });
     }
   }
@@ -58,10 +60,28 @@ class ProductService {
     //return this.products;
   }
 
+
+  async findOneV2(id){
+    /*const failed = this.getTotal();
+    if (failed) {
+      //pass
+    }*/
+    const product = this.products.find(product => product.id === id);
+    if (!product) {
+      // Send a status code 404:
+      throw boom.notFound('Product not found (Boom Error handler)');
+    } else if(product.isBlocked){
+      throw boom.conflict('Product is blocked');// status code 409
+    }
+    return product;
+  }
+
   async findOne(id){
     // find in array a product with ID
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        // error function not found:
+        //const myError = this.myError();
         const productToBeFound = this.products.find(item => item.id === id);
         if (productToBeFound) {
           resolve(productToBeFound);
@@ -86,10 +106,11 @@ class ProductService {
   }
 
   async update(id, changes){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const indexProduct = this.products.findIndex(item => item.id === id);
       if (indexProduct === -1){
-        reject(new Error('Product not found when updating data.'));
+        //reject(new Error('Product not found when updating data.'));
+        throw boom.notFound('Product not found');// .notFound === Status Code 404
       } else {
         // product to update:
         const product = this.products[indexProduct];
