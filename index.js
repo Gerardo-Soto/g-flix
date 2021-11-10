@@ -1,3 +1,4 @@
+// Packages
 const express = require('express');
 const routeApi = require('./routes');// = ./routes/index.js
 
@@ -7,6 +8,9 @@ const port = 3000;
 
 // Middleware to receive JSON POST:
 app.use(express.json());
+
+// Middleware created for the project:
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errors.handler');
 
 // paths app
 // route by default:
@@ -22,6 +26,10 @@ app.get('/home', (req, res) => {
 // Add to routeApi the routes of this file:
 routeApi(app);
 
+// include my Middleware Errors to the end
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);
 
 //run app:
 app.listen(port, "0.0.0.0", () => {
@@ -29,6 +37,14 @@ app.listen(port, "0.0.0.0", () => {
   // console.log in Dev (yes) / console.log in Prod (NO)
   console.log('Server listen at http://localhost:' + port);
 });
+
+
+
+
+
+
+
+
 
 
 

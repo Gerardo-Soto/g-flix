@@ -23,18 +23,19 @@ router.get('/filter', (req, res) => {
 
 
 // route to get a specific product by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   // EMACScript 5-
   //  const id = req.params.id;
   // EMACScript 6+
   try {
     const { id } = req.params;
-    const product = await productService.findOne(id);
+    const product = await productService.findOneV2(id);
     res.status(200).json(product);
   } catch (error) {
-    res.status(404).json({
+    next(error);
+    /*res.status(404).json({
       message: error.message,// internal error
-    });
+    });*/
   }
 });
 
@@ -65,14 +66,16 @@ router.post('/', async (req, res) => {
 
 
 // route to partial update product
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;// get url params
     const body = req.body;// Get the body request
     const product = await productService.update(id, body);
     res.status(200).json(product);
   } catch (error) {
-    res.status(404).json({message: error.message});
+    //res.status(404).json({message: error.message});
+    // send error to Middleware:
+    next(error);
   }
 });
 
