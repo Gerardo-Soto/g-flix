@@ -1,18 +1,34 @@
 // Packages
 const express = require('express');
+const cors = require('cors');
 const routeApi = require('./routes');// = ./routes/index.js
 
 // config server
 const app = express();
+
+const whitelist = ['http://127.0.0.1', 'http://github.gerardosoto.com/g-flix/'];
+const options = {
+  origin: (origin, callback) => {
+    //console.log(origin);
+    if (whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Permission denied, you are not on the whitelist. Contact administrator.'));
+    }
+  }
+}
+
+app.use(cors(options));
 const port = 3000;
 
 // Middleware to receive JSON POST:
 app.use(express.json());
 
 // Middleware created for the project:
-const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errors.handler');
+const { logErrors, errorHandler, boomErrorHandler } = require('./middleware/errors.handler');
 
 // paths app
+
 // route by default:
 app.get('/', (req, res) => {
   res.send('Hello, server on express');

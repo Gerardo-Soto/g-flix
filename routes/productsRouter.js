@@ -5,6 +5,17 @@ const router = express.Router()// = /products at g-flix/index.js
 // Services:
 const ProductService = require('../services/productService');
 
+// Middleware:
+const validatorHandler = require('../middleware/validatorHandler');
+
+// Schema:
+const {
+  createProductSchema,
+  getProductSchema,
+  updateProductSchema,
+  deleteProductSchema,
+} = require('../schema/productSchema')
+
 // initialization class ProductService
 const productService = new ProductService();
 
@@ -23,25 +34,24 @@ router.get('/filter', (req, res) => {
 
 
 // route to get a specific product by ID
-router.get('/:id', async (req, res, next) => {
-  // EMACScript 5-
-  //  const id = req.params.id;
-  // EMACScript 6+
-  try {
-    const { id } = req.params;
-    const product = await productService.findOneV2(id);
-    res.status(200).json(product);
-  } catch (error) {
-    next(error);
-    /*res.status(404).json({
-      message: error.message,// internal error
-    });*/
+router.get('/:id',
+  validatorHandler(getProductSchema, 'params'),// Middleware to validate data
+  async (req, res, next) => {// Middleware to catch some error
+    try {
+      const { id } = req.params;
+      const product = await productService.findOneV2(id);
+      res.status(200).json(product);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 
 // route to get the detail product
-router.get('/:id/details', async (req, res) => {
+router.get('/:id/details',
+  validatorHandler(getProductSchema, 'params'),// Middleware to validate data
+  async (req, res) => {
   const { id } = req.params;
   const product = await productService.findOne(id);
   if (product) {
@@ -58,7 +68,9 @@ router.get('/:id/details', async (req, res) => {
 
 
 // route to create product (/products == /)
-router.post('/', async (req, res) => {
+router.post('/',
+  validatorHandler(createProductSchema, 'body'),// Middleware to validate data.
+  async (req, res) => {
   const body = req.body;// Get the body request
   const newProduct = await productService.create(body);
   res.status(201).json({newProduct});
@@ -66,7 +78,10 @@ router.post('/', async (req, res) => {
 
 
 // route to partial update product
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:id',
+  validatorHandler(getProductSchema, 'params'),// Middleware to validate id
+  validatorHandler(updateProductSchema, 'body'),// Middleware to validate data
+  async (req, res, next) => {
   try {
     const { id } = req.params;// get url params
     const body = req.body;// Get the body request
@@ -81,7 +96,9 @@ router.patch('/:id', async (req, res, next) => {
 
 
 // router to delete a product
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',
+  validatorHandler(deleteProductSchema, 'params'),// Middleware to validate data
+  async (req, res) => {
   const { id } = req.params;
   const product = await productService.delete(id);
   if (product) {

@@ -19,7 +19,9 @@ function boomErrorHandler (err, req, res, next){
   if (err.isBoom){
     const { output } = err;
     //res.status(500)... (BAD) > Dynamic error:
-    res.status(output.statusCode).json(output.payload);
+    // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    // Solution: add return res...
+    return res.status(output.statusCode).json(output.payload);
   }
   next(err);
 }
