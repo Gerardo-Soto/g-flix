@@ -15,5 +15,9 @@ let movies = [
       des: 'Lorem ipsum dolor sit',
       image: 'images/logo03.PNG'
     },
+    {
+      name: 'Express.js',
+      des: 'Lorem ipsum dolor sit',
+      image: 'images/logo03.PNG'
+    },
 ]
-  
