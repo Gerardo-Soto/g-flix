@@ -1,5 +1,5 @@
 body {
-    background-color: #AB88FF;
+    background-color: #24385B;
     font-family: 'PT Sans', sans-serif;
     margin: 0;
 }
@@ -14,7 +14,7 @@ a {
 
 .header {
     align-items: center;
-    background-color: #8F57FD;
+    background-color: #121F3D;
     display: flex;
     height: 80px;
     justify-content: space-between;
@@ -182,7 +182,7 @@ a {
 
 .carouser-item__details--title {
     font-size: 20px;
-    
+
 }
 
 .carouser-item__details--subtitle {
