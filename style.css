@@ -33,13 +33,15 @@ a {
 }
 
 .header__menu ul {
-    display: none;
-    list-style: none;
-    margin: 0px 0px 0px -14px;
-    padding: 0px;
-    position: absolute;
-    text-align: right;
-    width: 100px;
+  background-color: #121F3D;
+  display: none;
+  list-style: none;
+  margin: 0px 0px 0px -14px;
+  padding: 0px;
+  padding-right: 10px;
+  position: absolute;
+  text-align: right;
+  width: 100px;
 }
 
 .header__menu:hover ul, ul:hover{
