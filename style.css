@@ -150,7 +150,7 @@ a {
 .carousel-item {
     background-color: #43B0FB;
     border-radius: 30px;
-    cursor: pointer;
+    /*cursor: pointer;*/
     display: inline-block;
     height: 250px;
     margin-right: 20px;
@@ -203,12 +203,13 @@ a {
 }
 
 .carouser-item__details--title {
-    font-size: 20px;
-
+  font-size: 20px;
+  padding-left: 20px;
 }
 
 .carouser-item__details--subtitle {
     font-size: 15px;
+    padding-left: 20px;
 }
 
 .categories__title {
@@ -217,6 +218,14 @@ a {
     position: absolute;
     padding-left: 30px;
     width: 100%;
+}
+
+.img-play {
+  padding-top: 15px;
+}
+
+.img-plus {
+  padding-top: 10px;
 }
 
 .footer {
