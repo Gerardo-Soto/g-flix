@@ -14,7 +14,7 @@ const {
   getProductSchema,
   updateProductSchema,
   deleteProductSchema,
-} = require('../schema/productSchema')
+} = require('../schema/productSchema');
 
 // initialization class ProductService
 const productService = new ProductService();

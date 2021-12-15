@@ -1,5 +1,5 @@
 // info by videos
-let movies = [
+/*let movies = [
     {
       name: 'NodeJS',
       des: 'Lorem ipsum',
@@ -21,3 +21,9 @@ let movies = [
       image: 'images/logo03.PNG'
     },
 ]
+*/
+
+var fs = require('fs');
+var files = fs.readdirSync('./images/test/');
+
+console.log(files);
