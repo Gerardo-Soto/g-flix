@@ -143,10 +143,12 @@ margin-right: 30px;
 
 .buttons button {
   background: none;
+  display: inline;
   border: 0;
   outline: 0;
   cursor: pointer;
 }
+
 
 .buttons button::before {
   content: '\f144';
@@ -164,7 +166,16 @@ margin-right: 30px;
 }
 
 .buttons button.pause::before {
-  content: '\28b';
+  content: '\f28b';
+}
+
+.time__video {
+  display: flex;
+  position: absolute;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  margin-left: 60px;
+  font-size: 24px;
 }
 
 .asider {
@@ -174,22 +185,21 @@ margin-right: 30px;
 
 .progress-bar {
   height: 10px;
-  top: 0;
-  left: 0;
   width: 100%;
   background: #121F3D;
+  cursor: pointer;
 }
 
 .purple-juice {
   height: 10px;
-  width: 250px;
-  background-color: blueviolet;
+  width: 0%;
+  background-color: #94CA3E;
 }
 
 .footer {
   position: relative;
   background-color: #24385B;
-  height: 3rem;
+  height: 6rem;
   width: 100%;
   margin-top: auto;
 }
