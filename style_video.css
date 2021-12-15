@@ -108,10 +108,84 @@ margin-right: 30px;
   display: flex;
   flex-direction: column;
 }
+
+.c-video {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  bottom: 0;
+  /*Animations controls: hidden...*/
+  overflow: hidden;
+}
+
+/*Animations controls:*/
+.c-video:hover .controls {
+  transform: translateY(0);
+}
+
+.controls {
+  display: flex;
+  position: absolute;/* tutorial: absolute*/
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  flex-wrap: wrap-reverse;
+  background: rgba(0, 0, 0, .6);
+  /*Animations controls: hidden controls to down:*/
+  transform: translateY(100%) translateY(7px);
+  transition: all 0.5s;
+}
+
+.buttons {
+  padding: 10px;
+}
+
+.buttons button {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.buttons button::before {
+  content: '\f144';
+  font-family: "Font Awesome 5 Free";
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  font-size: 28px;
+  color: azure;
+  -webkit-font-smoothing: antialiased;
+}
+
+.buttons button.play:before {
+  content: '\f144';
+}
+
+.buttons button.pause::before {
+  content: '\28b';
+}
+
 .asider {
   background-color: #24385B;
   width: 30rem;
 }
+
+.progress-bar {
+  height: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #121F3D;
+}
+
+.purple-juice {
+  height: 10px;
+  width: 250px;
+  background-color: blueviolet;
+}
+
 .footer {
   position: relative;
   background-color: #24385B;
@@ -119,9 +193,11 @@ margin-right: 30px;
   width: 100%;
   margin-top: auto;
 }
+
 .menu {
   display: flex;
 }
+
 .menu__item {
   list-style: none;
   flex: 1;
@@ -132,6 +208,7 @@ margin-right: 30px;
   color: whitesmoke;
   transition: flex .5s;
 }
+
 .menu__item:hover {
   flex: 2;
 }
