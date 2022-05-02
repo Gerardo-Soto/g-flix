@@ -23,7 +23,20 @@
 ]
 */
 
-var fs = require('fs');
+//requiring path and fs modules
+//const fs = require("fs");
+/*import { fs } from 'fs';
+
+//joining path of directory
+let directory = "videos";
+
+let dirBuf = Buffer.from(directory);
+
+let files = fs.readdirSync(directory);
+console.log(files);
+*/
+/*
 var files = fs.readdirSync('./images/test/');
 
 console.log(files);
+*/

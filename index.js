@@ -1,12 +1,28 @@
 // Packages
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const routeApi = require('./routes');// = ./routes/index.js
+const fs = require('fs');
+
+//joining path of directory
+let directory = "images/test";
+let files = fs.readdirSync(directory);
+console.log(files);
+
+files.forEach(file => {
+  console.log(file);
+});
+
+function fetchMovie(id) {
+  return files[id];
+}
+
 
 // config server
 const app = express();
 
-const whitelist = ['http://127.0.0.1', 'http://github.gerardosoto.com/g-flix/'];
+const whitelist = ['http://127.0.0.1:3000', 'http://github.gerardosoto.com/g-flix/'];
 const options = {
   origin: (origin, callback) => {
     //console.log(origin);
@@ -31,8 +47,20 @@ const { logErrors, errorHandler, boomErrorHandler } = require('./middleware/erro
 // paths app
 
 // route by default:
+app.use(express.static(__dirname));
+
 app.get('/', (req, res) => {
-  res.send('Hello, server on express');
+  //res.send('Hello, server on express');
+  let movieSelected = fetchMovie(1);
+  console.log("Movie selected: "+ movieSelected);
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.get('/movies', (req, res) => {
+  console.log("Backend get movies test:b");
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(Buffer.from('navidad, grtinch'));
+  //res.status(200).send({data: 'navidad, grtinch'});
 });
 
 // route home page

@@ -1,12 +1,14 @@
 //
-
+/*
 const carrousel = document.querySelector('.carousel');
 let sliders = [];
 
 let slidersIndex = 0; // to track current slide index
-
+*/
 // function to create a slide:
-const createSlide = () => {
+/*const createSlide = () => {
+  let slidersIndex = 0; // to track current slide index
+
   if (slideIndex >= movies.length) {
     slidersIndex = 0;
   }
@@ -45,10 +47,22 @@ const createSlide = () => {
   }
 }
 
-for(let i = 0; i < 3; i++){
+for(let i = 0; i < 4; i++){
   createSlide();
 }
 
 setInterval(() => {
   createSlide();
 }, 3000);
+*/
+function receiveInfoMovies() {
+  console.log("receiving info movies...");
+  fetch(`/movies/`)
+    .then((data) => console.log(data));
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/9/`)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}
+
+receiveInfoMovies()

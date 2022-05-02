@@ -23,6 +23,7 @@ const productService = new ProductService();
 // route of all products
 router.get('/', async (req, res) => {
   const products = await productService.find();
+  console.log('hello');
   res.status(200).json(products);
 });
 
